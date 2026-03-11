@@ -17,7 +17,7 @@
 
 **SkidBGone** is a TV-B-Gone firmware for the ESP32-C3 SuperMini. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
 
-![CI](https://github.com/labubuahhginger/TVBGoneC3/actions/workflows/build.yml/badge.svg)
+![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)
 ![Platform](https://img.shields.io/badge/platform-ESP32--C3-red)
 ![Framework](https://img.shields.io/badge/framework-Arduino-blue)
 ![Skiddy](https://img.shields.io/badge/mascot-Skiddy-purple)
