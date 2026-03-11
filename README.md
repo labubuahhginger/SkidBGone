@@ -3,7 +3,7 @@
   / ___// /__(_)___/ / __ )/ ____/___  ____  ___ 
   \__ \/ //_/ / __  / __  / / __/ __ \/ __ \/ _ \
  ___/ / ,< / / /_/ / /_/ / /_/ / /_/ / / / /  __/
-/____/_/|_/_/\__,_/_____/\____/\____/_/ /_/\___/
+/____/_/|_/_/\__,_/_____/\____/\____/_/ /_/\___/ 
 
         ( o  o )  < Skiddy can't wait to turn off everything. >
          (  v  )
@@ -11,15 +11,19 @@
         _|_____|_
 ```
 
+> 🌐 **English** | [Русский](README_RUS.md)
+
 # SkidBGone 📺💀
 
 > *"Every TV in the room. Every projector in the school. Every smart board in the hallway. Skiddy don't care."*
 
-**SkidBGone** is a TV-B-Gone firmware for the ESP32-C3 SuperMini. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
+**SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
 
-![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)
-![Platform](https://img.shields.io/badge/platform-ESP32--C3-red)
-![Framework](https://img.shields.io/badge/framework-Arduino-blue)
+[![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)](https://github.com/labubuahhginger/SkidBGone/actions)
+![Platform](https://img.shields.io/badge/platform-ESP32--C3-red?logo=espressif)
+![Framework](https://img.shields.io/badge/framework-Arduino-teal?logo=arduino)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Devices](https://img.shields.io/badge/devices-35%2B-blueviolet)
 
 ---
 
@@ -39,7 +43,13 @@ Skiddy is the official mascot of SkidBGone. He doesn't know what mercy is.
 
 ## ⚡ What it does
 
-Skiddy sends IR power-off codes to **30+ devices** — TVs, projectors, smart boards — one by one, until the room goes dark.
+One button press. Skiddy sends IR power-off codes to **35+ devices** — TVs, projectors, and smart boards — one by one, until the room goes dark.
+
+| Category | Count |
+|---|---|
+| 📺 TVs | 14 brands |
+| 📽️ Projectors | 15 brands |
+| 🖥️ Smart Boards & Pro Displays | 6 brands |
 
 > *"Skiddy done it's job."*
 
@@ -47,10 +57,10 @@ Skiddy sends IR power-off codes to **30+ devices** — TVs, projectors, smart bo
 
 ## 🔧 Hardware
 
-| Part | Info |
-|------|------|
+| Part | Details |
+|---|---|
 | ESP32-C3 SuperMini | Main board |
-| IR Transmitter (3-pin) | Has built-in transistor, plug and play |
+| IR Transmitter (3-pin) | Built-in transistor, plug and play |
 
 ### Wiring
 
@@ -61,40 +71,68 @@ GND             →  GND
 DAT             →  GPIO3
 ```
 
-- **Trigger:** BOOT button (GPIO9)
-- **LED indicator:** Built-in (GPIO8) — glows while Skiddy is working
+**BOOT button** → GPIO9 (trigger)  
+**LED indicator** → GPIO8, active LOW — glows while Skiddy is working
 
 ---
 
-## 📡 Protocols
+## 📡 Supported Protocols
 
-`NEC` `SIRC 12/15/20-bit` `RC5` `RC6` `JVC` `Panasonic`
+`NEC` `SAMSUNG` `SIRC 12-bit` `SIRC 15-bit` `SIRC 20-bit` `RC5` `RC6` `JVC` `Panasonic`
 
 ---
 
 ## 📺 Supported Devices
 
-**TVs**
-Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel · Beko
+<details>
+<summary><b>TVs (14 brands)</b></summary>
 
-**Projectors**
+Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel/Beko
+
+</details>
+
+<details>
+<summary><b>Projectors (15 brands)</b></summary>
+
 BenQ · Epson · Optoma · ViewSonic · Acer · Infocus · NEC · Panasonic · Sony VPL · Casio · Sanyo · Mitsubishi · Hitachi · Dell · Ricoh
 
-**Pro Displays & Smart Boards**
-Barco · Christie · Canon · SMART Board · Promethean · NexTouch *(experimental)*
+</details>
+
+<details>
+<summary><b>Smart Boards & Pro Displays (6 brands)</b></summary>
+
+Barco · Christie · Canon · SMART Board · Promethean · NexTouch *(experimental — no confirmed public IR codes)*
+
+</details>
 
 ---
 
-## 🚀 Build & Flash
+## 🚀 Flash via Browser
+
+No PlatformIO needed. Flash Skiddy straight from your browser:
+
+👉 **[skiddysflasher](https://labubuahhginger.github.io/skiddysflasher)**
+
+Works on Chrome/Edge with Web Serial API. Just plug in your ESP32-C3 and hit Flash.
+
+---
+
+## 🛠️ Build Locally
+
+Requires [PlatformIO](https://platformio.org/).
 
 ```bash
+# Clone
+git clone https://github.com/labubuahhginger/SkidBGone.git
+cd SkidBGone
+
 # Build
 pio run
 
 # Flash
 pio run -t upload
 
-# Serial monitor (watch Skiddy work)
+# Watch Skiddy work
 pio device monitor
 ```
 
@@ -104,9 +142,9 @@ pio device monitor
 
 1. Flash the firmware
 2. Press **BOOT**
-3. LED turns on — Skiddy is unleashed
-4. LED turns off — Skiddy is done
-5. Check Serial Monitor for the full play-by-play
+3. LED turns **on** — Skiddy is unleashed
+4. LED turns **off** — Skiddy is done
+5. Open Serial Monitor at `115200` baud for the full play-by-play
 
 ---
 
@@ -115,10 +153,10 @@ pio device monitor
 ```
 SkidBGone/
 ├── src/
-│   └── main.cpp        # Skiddy lives here
+│   └── main.cpp              # Skiddy lives here
 ├── .github/
 │   └── workflows/
-│       └── build.yml   # CI — makes sure Skiddy compiles
+│       └── build.yml         # CI — builds & releases firmware.bin
 ├── platformio.ini
 └── README.md
 ```
@@ -134,4 +172,4 @@ Don't let Skiddy loose in public. He has no chill.
 
 ## 📜 License
 
-MIT — Skiddy is free.
+MIT — Skiddy is free. Use him wisely.
