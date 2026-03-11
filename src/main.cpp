@@ -296,7 +296,21 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH);
-  Serial.println("Skid are you ready? Yeah im ready bradar. Press BOOT to start.");
+
+  Serial.println("");
+  Serial.println("   _____ __   _     ______  ______               ");
+  Serial.println("  / ___// /__(_)___/ / __ )/ ____/___  ____  ___ ");
+  Serial.println("  \\__ \\/ //_/ / __  / __  / / __/ __ \\/ __ \\/ _ \\");
+  Serial.println(" ___/ / ,< / / /_/ / /_/ / /_/ / /_/ / / / /  __/");
+  Serial.println("/____/_/|_/_/\\__,_/_____/\\____/\\____/_/ /_/\\___/ ");
+  Serial.println("");
+  Serial.println("        ( o  o )  < Skiddy can't wait to turn off everything. >");
+  Serial.println("         (  v  )");
+  Serial.println("        /|     |\\");
+  Serial.println("        _|_____|_");
+  Serial.println("");
+  Serial.println("  Skid are you ready? Yeah im ready bradar. Press BOOT to start.");
+  Serial.println("");
 }
 
 void loop() {
