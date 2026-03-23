@@ -17,13 +17,13 @@
 
 > *"Every TV in the room. Every projector in the school. Every smart board in the hallway. Skiddy don't care."*
 
-**SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
+**SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
 
 [![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)](https://github.com/labubuahhginger/SkidBGone/actions)
 ![Platform](https://img.shields.io/badge/platform-ESP32--C3-red?logo=espressif)
 ![Framework](https://img.shields.io/badge/framework-Arduino-teal?logo=arduino)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Devices](https://img.shields.io/badge/devices-35%2B-blueviolet)
+![Devices](https://img.shields.io/badge/devices-56%2B-blueviolet)
 
 ---
 
@@ -43,13 +43,13 @@ Skiddy is the official mascot of SkidBGone. He doesn't know what mercy is.
 
 ## ⚡ What it does
 
-One button press. Skiddy sends IR power-off codes to **35+ devices** — TVs, projectors, and smart boards — one by one, until the room goes dark.
+One button press. Skiddy sends IR power-off codes to **56+ devices** — TVs, projectors, and smart boards — one by one, until the room goes dark.
 
 | Category | Count |
 |---|---|
-| 📺 TVs | 14 brands |
-| 📽️ Projectors | 15 brands |
-| 🖥️ Smart Boards & Pro Displays | 6 brands |
+| 📺 TVs | 24 brands |
+| 📽️ Projectors | 20 brands |
+| 🖥️ Smart Boards & Pro Displays | 12 brands |
 
 > *"Skiddy done it's job."*
 
@@ -85,23 +85,23 @@ DAT             →  GPIO3
 ## 📺 Supported Devices
 
 <details>
-<summary><b>TVs (14 brands)</b></summary>
+<summary><b>TVs (24 brands)</b></summary>
 
-Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel/Beko
-
-</details>
-
-<details>
-<summary><b>Projectors (15 brands)</b></summary>
-
-BenQ · Epson · Optoma · ViewSonic · Acer · Infocus · NEC · Panasonic · Sony VPL · Casio · Sanyo · Mitsubishi · Hitachi · Dell · Ricoh
+Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel/Beko · Haier · Insignia · Sanyo · Funai · Magnavox · Emerson · Grundig · Xiaomi · Skyworth · AOC
 
 </details>
 
 <details>
-<summary><b>Smart Boards & Pro Displays (6 brands)</b></summary>
+<summary><b>Projectors (20 brands)</b></summary>
 
-Barco · Christie · Canon · SMART Board · Promethean · NexTouch *(experimental — no confirmed public IR codes)*
+BenQ · Epson · Optoma · ViewSonic · Acer · Infocus · NEC · Panasonic · Sony VPL · Casio · Sanyo · Mitsubishi · Hitachi · Dell · Ricoh · Vivitek · LG Minibeam · XGIMI · JmGo · Anker Nebula
+
+</details>
+
+<details>
+<summary><b>Smart Boards & Pro Displays (12 brands)</b></summary>
+
+Barco · Christie · Canon · SMART Board · Promethean · NexTouch · Newline · ViewSonic IFP · BenQ Board · Clevertouch · Maxhub · Hikvision
 
 </details>
 

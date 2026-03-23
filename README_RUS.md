@@ -23,7 +23,7 @@
 ![Platform](https://img.shields.io/badge/platform-ESP32--C3-red?logo=espressif)
 ![Framework](https://img.shields.io/badge/framework-Arduino-teal?logo=arduino)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Devices](https://img.shields.io/badge/devices-35%2B-blueviolet)
+![Devices](https://img.shields.io/badge/devices-56%2B-blueviolet)
 
 ---
 
@@ -43,13 +43,13 @@
 
 ## ⚡ Что это делает
 
-Одно нажатие. Скидди посылает IR-коды выключения на **35+ устройств** — телевизоры, проекторы и интерактивные доски — одно за другим, пока комната не погрузится в темноту.
+Одно нажатие. Скидди посылает IR-коды выключения на **56+ устройств** — телевизоры, проекторы и интерактивные доски — одно за другим, пока комната не погрузится в темноту.
 
 | Категория | Количество |
 |---|---|
-| 📺 Телевизоры | 14 брендов |
-| 📽️ Проекторы | 15 брендов |
-| 🖥️ Интерактивные доски | 6 брендов |
+| 📺 Телевизоры | 24 брендов |
+| 📽️ Проекторы | 20 брендов |
+| 🖥️ Интерактивные доски | 12 брендов |
 
 > *«Скидди сделал своё дело.»*
 
@@ -85,23 +85,23 @@ DAT             →  GPIO3
 ## 📺 Поддерживаемые устройства
 
 <details>
-<summary><b>Телевизоры (14 брендов)</b></summary>
+<summary><b>Телевизоры (24 брендов)</b></summary>
 
-Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel/Beko
-
-</details>
-
-<details>
-<summary><b>Проекторы (15 брендов)</b></summary>
-
-BenQ · Epson · Optoma · ViewSonic · Acer · Infocus · NEC · Panasonic · Sony VPL · Casio · Sanyo · Mitsubishi · Hitachi · Dell · Ricoh
+Samsung · LG · Sony · Philips · Panasonic · Sharp · Toshiba · Hitachi · Hisense · TCL · Vizio · JVC · Mitsubishi · Vestel/Beko · Haier · Insignia · Sanyo · Funai · Magnavox · Emerson · Grundig · Xiaomi · Skyworth · AOC
 
 </details>
 
 <details>
-<summary><b>Интерактивные доски (6 брендов)</b></summary>
+<summary><b>Проекторы (20 брендов)</b></summary>
 
-Barco · Christie · Canon · SMART Board · Promethean · NexTouch *(экспериментально — подтверждённых IR-кодов нет)*
+BenQ · Epson · Optoma · ViewSonic · Acer · Infocus · NEC · Panasonic · Sony VPL · Casio · Sanyo · Mitsubishi · Hitachi · Dell · Ricoh · Vivitek · LG Minibeam · XGIMI · JmGo · Anker Nebula
+
+</details>
+
+<details>
+<summary><b>Интерактивные доски (12 брендов)</b></summary>
+
+Barco · Christie · Canon · SMART Board · Promethean · NexTouch · Newline · ViewSonic IFP · BenQ Board · Clevertouch · Maxhub · Hikvision
 
 </details>
 
