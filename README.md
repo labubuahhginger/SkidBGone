@@ -152,8 +152,13 @@ pio device monitor
 
 ```
 SkidBGone/
+├── include/
+│   ├── tvs.h                 # DB of TV IR codes
+│   ├── projectors.h          # DB of Projector IR codes
+│   ├── smartboards.h         # DB of Smart Board IR codes
+│   └── utils.h               # Dynamic name extraction macro
 ├── src/
-│   └── main.cpp              # Skiddy lives here
+│   └── main.cpp              # The runner — Skiddy lives here
 ├── .github/
 │   └── workflows/
 │       └── build.yml         # CI — builds & releases firmware.bin
