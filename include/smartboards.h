@@ -66,11 +66,6 @@ void sendMaxhub() {
   irsend.sendNEC(0x6E91807F, 32); delay(35);
 }
 
-void sendHikvision() {
-  irsend.sendNEC(0x45BA40BF, 32); delay(35);
-  irsend.sendNEC(0x45BAC03F, 32); delay(35);
-}
-
 void sendLegamaster() {
   irsend.sendNEC(0xB748F00F, 32); delay(35);
   irsend.sendNEC(0xB74840BF, 32); delay(35);
@@ -86,14 +81,14 @@ void sendDahua() {
   irsend.sendNEC(0xCB34C03F, 32); delay(35);
 }
 
-void sendDTEN() {
-  irsend.sendNEC(0x3DC240BF, 32); delay(35);
-  irsend.sendNEC(0x3DC2C03F, 32); delay(35);
+void sendOptomaBoard() {
+  irsend.sendNEC(0xBC43CE31, 32); delay(35);
+  irsend.sendNEC(0xBC43CE31, 32); delay(35);
 }
 
-void sendItatouch() {
-  irsend.sendNEC(0x7C8340BF, 32); delay(35);
-  irsend.sendNEC(0x7C83C03F, 32); delay(35);
+void sendAvocor() {
+  irsend.sendNEC(0x00FF08F7, 32); delay(35);
+  irsend.sendNEC(0x00FFF708, 32); delay(35);
 }
 
 void sendPlanar() {
@@ -101,85 +96,9 @@ void sendPlanar() {
   irsend.sendNEC(0x1F6040BF, 32); delay(35);
 }
 
-void sendLeyard() {
-  irsend.sendNEC(0x4CB340BF, 32); delay(35);
-  irsend.sendNEC(0x4CB340BF, 32); delay(35);
-}
-
-void sendAbsen() {
-  irsend.sendNEC(0x08F740BF, 32); delay(35);
-  irsend.sendNEC(0x08F740BF, 32); delay(35);
-}
-
-void sendOptomaBoard() {
-  irsend.sendNEC(0xBC43CE31, 32); delay(35);
-  irsend.sendNEC(0xBC43CE31, 32); delay(35);
-}
-
 void sendELO() {
   irsend.sendNEC(0x04FB40BF, 32); delay(35);
   irsend.sendNEC(0x04FB40BF, 32); delay(35);
-}
-
-void sendSmartDeck() {
-  irsend.sendNEC(0x00FF00FF, 32); delay(35);
-  irsend.sendNEC(0x00FFFF00, 32); delay(35);
-}
-void sendTouchIT() {
-  irsend.sendNEC(0x00FF807F, 32); delay(35);
-  irsend.sendNEC(0x00FF7F80, 32); delay(35);
-}
-void sendGenee() {
-  irsend.sendNEC(0x00FF40BF, 32); delay(35);
-  irsend.sendNEC(0x00FFBF40, 32); delay(35);
-}
-void sendHitachiBoard() {
-  irsend.sendNEC(0x00FF20DF, 32); delay(35);
-  irsend.sendNEC(0x00FFDF20, 32); delay(35);
-}
-void sendPanasonicBoard() {
-  irsend.sendNEC(0x00FF10EF, 32); delay(35);
-  irsend.sendNEC(0x00FFEF10, 32); delay(35);
-}
-void sendRecordex() {
-  irsend.sendNEC(0x00FF906F, 32); delay(35);
-  irsend.sendNEC(0x00FF6F90, 32); delay(35);
-}
-void sendQomo() {
-  irsend.sendNEC(0x00FF50AF, 32); delay(35);
-  irsend.sendNEC(0x00FFAF50, 32); delay(35);
-}
-void sendTriumphBoard() {
-  irsend.sendNEC(0x00FFD02F, 32); delay(35);
-  irsend.sendNEC(0x00FF2FD0, 32); delay(35);
-}
-void sendInFocusBoard() {
-  irsend.sendNEC(0x00FF30CF, 32); delay(35);
-  irsend.sendNEC(0x00FFCF30, 32); delay(35);
-}
-void sendHoverCam() {
-  irsend.sendNEC(0x00FFB04F, 32); delay(35);
-  irsend.sendNEC(0x00FF4FB0, 32); delay(35);
-}
-void sendIpevo() {
-  irsend.sendNEC(0x00FF708F, 32); delay(35);
-  irsend.sendNEC(0x00FF8F70, 32); delay(35);
-}
-void sendOneScreen() {
-  irsend.sendNEC(0x00FFF00F, 32); delay(35);
-  irsend.sendNEC(0x00FF0FF0, 32); delay(35);
-}
-void sendAvocor() {
-  irsend.sendNEC(0x00FF08F7, 32); delay(35);
-  irsend.sendNEC(0x00FFF708, 32); delay(35);
-}
-void sendStarBoard() {
-  irsend.sendNEC(0x00FF8877, 32); delay(35);
-  irsend.sendNEC(0x00FF7788, 32); delay(35);
-}
-void sendVibeBoard() {
-  irsend.sendNEC(0x00FF48B7, 32); delay(35);
-  irsend.sendNEC(0x00FFB748, 32); delay(35);
 }
 
 #include "utils.h"
@@ -205,32 +124,13 @@ const SmartBoardBrandTarget SmartBoardBrands[] = {
     REGISTER_TARGET(sendBenQBoard),
     REGISTER_TARGET(sendClevertouch),
     REGISTER_TARGET(sendMaxhub),
-    REGISTER_TARGET(sendHikvision),
     REGISTER_TARGET(sendLegamaster),
     REGISTER_TARGET(sendIQTouch),
     REGISTER_TARGET(sendDahua),
-    REGISTER_TARGET(sendDTEN),
-    REGISTER_TARGET(sendItatouch),
-    REGISTER_TARGET(sendPlanar),
-    REGISTER_TARGET(sendLeyard),
-    REGISTER_TARGET(sendAbsen),
     REGISTER_TARGET(sendOptomaBoard),
-    REGISTER_TARGET(sendELO),
-    REGISTER_TARGET(sendSmartDeck),
-    REGISTER_TARGET(sendTouchIT),
-    REGISTER_TARGET(sendGenee),
-    REGISTER_TARGET(sendHitachiBoard),
-    REGISTER_TARGET(sendPanasonicBoard),
-    REGISTER_TARGET(sendRecordex),
-    REGISTER_TARGET(sendQomo),
-    REGISTER_TARGET(sendTriumphBoard),
-    REGISTER_TARGET(sendInFocusBoard),
-    REGISTER_TARGET(sendHoverCam),
-    REGISTER_TARGET(sendIpevo),
-    REGISTER_TARGET(sendOneScreen),
     REGISTER_TARGET(sendAvocor),
-    REGISTER_TARGET(sendStarBoard),
-    REGISTER_TARGET(sendVibeBoard),
+    REGISTER_TARGET(sendPlanar),
+    REGISTER_TARGET(sendELO),
 };
 
 const int numSmartBoardBrands = sizeof(SmartBoardBrands) / sizeof(SmartBoardBrands[0]);
@@ -245,7 +145,6 @@ void sendAllSmartBoards() {
     Serial.print("] ");
     printBrandName(SmartBoardBrands[i].funcName);
     Serial.println();
-
     SmartBoardBrands[i].sendFunc();
     delay(80);
   }
