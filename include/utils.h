@@ -6,9 +6,9 @@
 #ifdef M5STICKC_PLUS2
   #include <M5Unified.h>
   extern uint8_t selectedIrPin;
-  const uint8_t selectablePins[] = {19, 0, 26, 36, 25, 32, 33};
-  const char* const pinNames[] = {"Internal (G19)", "Header (G0)", "Header (G26)", "Header (G36)", "Header (G25)", "Grove (G32)", "Grove (G33)"};
-  const int numPins = 7;
+  const uint8_t selectablePins[] = {19, 0, 26, 25, 32, 33};
+  const char* const pinNames[] = {"Internal (G19)", "Header (G0)", "Header (G26)", "Header (G25)", "Grove (G32)", "Grove (G33)"};
+  const int numPins = 6;
 
   #define IR_PIN      selectedIrPin
   #define BUTTON_PIN  37

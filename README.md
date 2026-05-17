@@ -20,7 +20,7 @@
 **SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini** and **M5StickC Plus2**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
 
 [![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)](https://github.com/labubuahhginger/SkidBGone/actions)
-![Platform](https://img.shields.io/badge/platform-ESP32--C3%20%7C%20ESP32--S3-red?logo=espressif)
+![Platform](https://img.shields.io/badge/platform-ESP32%20%7C%20C3%20%7C%20S3-red?logo=espressif)
 ![Framework](https://img.shields.io/badge/framework-Arduino-teal?logo=arduino)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Devices](https://img.shields.io/badge/devices-79-blueviolet)
@@ -97,6 +97,15 @@ DAT             →  GPIO3
 
 ---
 
+## ⚠️ Flashing Note for M5StickC Plus2
+
+The M5StickC Plus2 has two hardware variants (ESP32-PICO and ESP32-S3).
+- If you get an **"invalid header"** error after flashing, try the other binary.
+- Flash at offset `0x10000` for ESP32 and `0x0` for ESP32-C3/S3 depending on your tool.
+- Using [skiddysflasher](https://labubuahhginger.github.io/skiddysflasher) is recommended as it handles offsets automatically.
+
+---
+
 ## 📡 Supported Protocols
 
 `NEC` `SAMSUNG` `SIRC 12-bit` `SIRC 15-bit` `SIRC 20-bit` `RC5` `RC6` `JVC` `Panasonic`
@@ -134,7 +143,7 @@ No PlatformIO needed. Flash Skiddy straight from your browser:
 
 👉 **[skiddysflasher](https://labubuahhginger.github.io/skiddysflasher)**
 
-Works on Chrome/Edge with Web Serial API. Just plug in your ESP32-C3 and hit Flash.
+Works on Chrome/Edge with Web Serial API. Just plug in your ESP32-C3/S3/M5 and hit Flash.
 
 ---
 
@@ -150,8 +159,11 @@ cd SkidBGone
 # Build for C3
 pio run -e esp32-c3-devkitm-1
 
-# Build for M5
+# Build for M5 (ESP32 variant)
 pio run -e m5stick-c-plus2
+
+# Build for M5 (S3 variant)
+pio run -e m5stick-c-plus2-s3
 ```
 
 ---
@@ -169,7 +181,7 @@ SkidBGone/
 │   └── main.cpp              # The runner — Skiddy lives here
 ├── .github/
 │   └── workflows/
-│       └── build.yml         # CI — builds both binaries
+│       └── build.yml         # CI — builds all binaries
 ├── platformio.ini
 └── README.md
 ```
