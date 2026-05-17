@@ -1,13 +1,13 @@
 ```
-   _____ __   _     ______  ______               
-  / ___// /__(_)___/ / __ )/ ____/___  ____  ___ 
+   _____ __   _     ______  ______
+  / ___// /__(_)___/ / __ )/ ____/___  ____  ___
   \__ \/ //_/ / __  / __  / / __/ __ \/ __ \/ _ \
  ___/ / ,< / / /_/ / /_/ / /_/ / /_/ / / / /  __/
-/____/_/|_/_/\__,_/_____/\____/\____/_/ /_/\___/ 
+/____/_/|_/_/\__,_/_____/\____/\____/_/ /_/\\___/
 
         ( o  o )  < Skiddy can't wait to turn off everything. >
          (  v  )
-        /|     |\
+        /|     |\\
         _|_____|_
 ```
 
@@ -17,10 +17,10 @@
 
 > *"Every TV in the room. Every projector in the school. Every smart board in the hallway. Skiddy don't care."*
 
-**SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
+**SkidBGone** is a TV-B-Gone firmware for the **ESP32-C3 SuperMini** and **M5StickC Plus2**. One button press and Skiddy goes to work — blasting IR codes at everything in sight.
 
 [![CI](https://github.com/labubuahhginger/SkidBGone/actions/workflows/build.yml/badge.svg)](https://github.com/labubuahhginger/SkidBGone/actions)
-![Platform](https://img.shields.io/badge/platform-ESP32--C3-red?logo=espressif)
+![Platform](https://img.shields.io/badge/platform-ESP32--C3%20%7C%20ESP32--S3-red?logo=espressif)
 ![Framework](https://img.shields.io/badge/framework-Arduino-teal?logo=arduino)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Devices](https://img.shields.io/badge/devices-79-blueviolet)
@@ -57,22 +57,43 @@ One button press. Skiddy sends IR power-off codes to **79 devices** — TVs, pro
 
 ## 🔧 Hardware
 
+### Option 1: ESP32-C3 SuperMini
 | Part | Details |
 |---|---|
 | ESP32-C3 SuperMini | Main board |
 | IR Transmitter (3-pin) | Built-in transistor, plug and play |
 
-### Wiring
-
+**Wiring:**
 ```
 IR Transmitter  →  ESP32-C3 SuperMini
 VCC             →  5V
 GND             →  GND
 DAT             →  GPIO3
 ```
+- **BOOT button** → GPIO9 (trigger)
+- **LED indicator** → GPIO8, active LOW — glows while Skiddy is working
 
-**BOOT button** → GPIO9 (trigger)  
-**LED indicator** → GPIO8, active LOW — glows while Skiddy is working
+### Option 2: M5StickC Plus2
+- **No external hardware required** (uses built-in IR LED).
+- **Display support**: Shows real-time progress and brand names.
+- **Configurable Output**: Choose between internal IR or external pins via menu.
+
+---
+
+## ▶️ Usage
+
+### For ESP32-C3:
+1. Flash the firmware.
+2. Press **BOOT**.
+3. LED turns **on** — Skiddy is unleashed.
+4. Press **BOOT** again to interrupt.
+
+### For M5StickC Plus2:
+1. Flash the firmware.
+2. **Main Screen**: Press **Button A** (front) to start blasting.
+3. **Settings**: Press **Button B** (side) to select IR output pin (Internal, Header, or Grove).
+4. During blasting, current brand and progress are shown on the LCD.
+5. Press **Button A** to interrupt.
 
 ---
 
@@ -126,25 +147,12 @@ Requires [PlatformIO](https://platformio.org/).
 git clone https://github.com/labubuahhginger/SkidBGone.git
 cd SkidBGone
 
-# Build
-pio run
+# Build for C3
+pio run -e esp32-c3-devkitm-1
 
-# Flash
-pio run -t upload
-
-# Watch Skiddy work
-pio device monitor
+# Build for M5
+pio run -e m5stick-c-plus2
 ```
-
----
-
-## ▶️ Usage
-
-1. Flash the firmware
-2. Press **BOOT**
-3. LED turns **on** — Skiddy is unleashed
-4. LED turns **off** — Skiddy is done
-5. Open Serial Monitor at `115200` baud for the full play-by-play
 
 ---
 
@@ -156,12 +164,12 @@ SkidBGone/
 │   ├── tvs.h                 # DB of TV IR codes
 │   ├── projectors.h          # DB of Projector IR codes
 │   ├── smartboards.h         # DB of Smart Board IR codes
-│   └── utils.h               # Dynamic name extraction macro
+│   └── utils.h               # Centralized logic & display helpers
 ├── src/
 │   └── main.cpp              # The runner — Skiddy lives here
 ├── .github/
 │   └── workflows/
-│       └── build.yml         # CI — builds & releases firmware.bin
+│       └── build.yml         # CI — builds both binaries
 ├── platformio.ini
 └── README.md
 ```
@@ -170,7 +178,7 @@ SkidBGone/
 
 ## ⚠️ Disclaimer
 
-This project is for **educational purposes** and **your own devices only**.  
+This project is for **educational purposes** and **your own devices only**.
 Don't let Skiddy loose in public. He has no chill.
 
 ---
