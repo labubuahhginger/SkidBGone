@@ -7,16 +7,27 @@
 #include "projectors.h"
 #include "smartboards.h"
 
+#ifdef M5STICKC_PLUS2
+uint8_t selectedIrPin = 19;
+int selectedPinIdx = 0;
+#endif
+
 IRsend irsend(IR_PIN);
 
 // skiddy's job job sahur
 void sendAll() {
   Serial.println(F("SkidBGone is the best TvBGone firmware bro. Starting..."));
 #ifdef M5STICKC_PLUS2
+  // We need to re-initialize irsend with the new pin because IRremoteESP8266
+  // IRsend class doesn't have a setPin method in this version.
+  irsend = IRsend(selectedIrPin);
+  irsend.begin();
+
   M5.Display.clear();
   M5.Display.setCursor(0, 0);
   M5.Display.setTextColor(GREEN);
   M5.Display.println(F("Skiddy is working..."));
+  M5.Display.printf("Output: %s\n", pinNames[selectedPinIdx]);
   M5.Display.setTextColor(WHITE);
 #endif
   delay(100);
@@ -42,6 +53,65 @@ void sendAll() {
   M5.Display.println(F("\nPress Button A\nto restart."));
 #endif
 }
+
+#ifdef M5STICKC_PLUS2
+void showMenu() {
+    bool inMenu = true;
+    while (inMenu) {
+        M5.update();
+        M5.Display.clear();
+        M5.Display.setCursor(0, 0);
+        M5.Display.setTextColor(ORANGE);
+        M5.Display.println(F("--- SETTINGS ---"));
+        M5.Display.setTextColor(WHITE);
+        M5.Display.println(F("Select IR Output:"));
+
+        for (int i = 0; i < numPins; i++) {
+            if (i == selectedPinIdx) {
+                M5.Display.setTextColor(CYAN);
+                M5.Display.print(F("> "));
+            } else {
+                M5.Display.setTextColor(WHITE);
+                M5.Display.print(F("  "));
+            }
+            M5.Display.println(pinNames[i]);
+        }
+
+        M5.Display.setTextColor(LIGHTGREY);
+        M5.Display.println(F("\n[Btn B] Next  [Btn A] Save"));
+
+        if (M5.BtnB.wasPressed()) {
+            selectedPinIdx = (selectedPinIdx + 1) % numPins;
+            selectedIrPin = selectablePins[selectedPinIdx];
+        }
+
+        if (M5.BtnA.wasPressed()) {
+            inMenu = false;
+        }
+        delay(10);
+    }
+
+    M5.Display.clear();
+    M5.Display.setCursor(0, 0);
+    M5.Display.setTextColor(GREEN);
+    M5.Display.println(F("Settings Saved!"));
+    M5.Display.setTextColor(WHITE);
+    M5.Display.printf("Pin: %s\n", pinNames[selectedPinIdx]);
+    delay(1000);
+}
+
+void showMain() {
+  M5.Display.clear();
+  M5.Display.setCursor(0, 0);
+  M5.Display.setTextColor(WHITE);
+  M5.Display.println(F("SkidBGone v1.1"));
+  M5.Display.setTextColor(YELLOW);
+  M5.Display.printf("IR Out: %s\n", pinNames[selectedPinIdx]);
+  M5.Display.setTextColor(WHITE);
+  M5.Display.println(F("\n[Btn A] Start Skiddy"));
+  M5.Display.println(F("[Btn B] Settings"));
+}
+#endif
 
 void setup() {
 #ifdef M5STICKC_PLUS2
@@ -81,10 +151,7 @@ void setup() {
   Serial.println(F(""));
 
 #ifdef M5STICKC_PLUS2
-  M5.Display.setTextColor(WHITE);
-  M5.Display.println(F("SkidBGone v1.0"));
-  M5.Display.println(F("Ready to blast."));
-  M5.Display.println(F("\nPress Button A\nto start."));
+  showMain();
 #endif
 }
 
@@ -95,6 +162,11 @@ void loop() {
       digitalWrite(LED_PIN, HIGH);
       sendAll();
       digitalWrite(LED_PIN, LOW);
+      showMain();
+  }
+  if (M5.BtnB.wasPressed()) {
+      showMenu();
+      showMain();
   }
 #else
   if (digitalRead(BUTTON_PIN) == LOW) {
